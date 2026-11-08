@@ -44,15 +44,4 @@ public class DataLoader {
 
    }
 
-   public String getDataFromVectorStore(String question) {
-       StringBuffer data = new StringBuffer();
-       SearchRequest searchRequest = SearchRequest.builder()
-               .query(question).topK(3).similarityThreshold(0.5).build();
-
-       List<Document> documentList = vectorStore.similaritySearch(searchRequest);
-       documentList.stream().forEach( document -> data.append(document.toString()+"\n"));
-
-       return data.toString();
-   }
-
 }
